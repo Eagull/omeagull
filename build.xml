@@ -43,8 +43,8 @@
 	<target name="build" depends="jade, coffee, minify, copyDependencies" />
 
 	<target name="deploy-bare">
-		<exec executable="${appengine.sdk}/appcfg.py" dir=".">
-				<arg line="-e ${appengine.email} --oauth2 --noauth_local_webserver" />
+		<exec executable="${appengine.sdk}/appcfg.py" dir="." failonerror="true">
+				<arg line="-e ${appengine.email} --oauth2" />
 				<arg line="update ${outputDir}" />
 		</exec>
 	</target>
