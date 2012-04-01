@@ -216,6 +216,15 @@ $ ->
 
 	$('.chatmsg').focus()
 
+	fb = (d, s, id) ->
+		fjs = d.getElementsByTagName(s)[0]
+		return if (d.getElementById(id))
+		js = d.createElement(s)
+		js.id = id
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=216540884750";
+		fjs.parentNode.insertBefore(js, fjs);
+	fb(document, 'script', 'facebook-jssdk')
+
 $(xmpp).bind 'connecting error authenticating authfail connected connfail disconnecting disconnected', (event) ->
 	view.updateXMPPStatus event.type
 	track.event 'XMPP', event.type

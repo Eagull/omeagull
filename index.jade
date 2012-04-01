@@ -22,10 +22,13 @@ html(itemscope, itemtype="http://schema.org/Product")
 
 		link(rel='stylesheet', href='/omegle.css')
 		style(type='text/css')
+			body { min-width: 900px; }
+			#logo { margin-right: 1rem; }
 			.logwrapper { margin-right: 0px; }
 			.controlwrapper { margin-right: 0px; }
-		style(type='text/css')
 			#sharebuttons span { margin: 0 0.5rem }
+			#gplus { position: absolute; right: 20rem; bottom: 0.33rem; }
+			#fblike { position: absolute; right: 22.5rem; bottom: 0.67rem; }
 		link(rel='icon', type='image/x-icon', href="favicon.ico")
 		script window.eagull = { version: "@VERSION@" };
 		script(src="/lib/jquery.min.js")
@@ -39,6 +42,10 @@ html(itemscope, itemtype="http://schema.org/Product")
 				img(src="/logo.png", height="57", alt="Omeagullible")
 			h2#tagline
 				img(src="/tagline.png", width="220", height="57", alt="Talk to strangers!")
+			#gplus
+				.g-plusone(data-annotation="none", data-href="http://www.eagull.net/")
+			#fblike
+				.fb-like(data-href="http://www.eagull.net/", data-layout="button_count")
 			#sharebuttons
 				span
 					a.ajax(x-doc="17SowdU8hiOngT-oDWs2Ho_UAjf5yy1yjEgXytBMnNJI", href="") About
@@ -93,3 +100,5 @@ html(itemscope, itemtype="http://schema.org/Product")
 		script(src="http://www.google-analytics.com/ga.js")
 		script(src="/lib/jquery.fancybox.pack.js")
 		link(rel="stylesheet", href="/lib/jquery.fancybox.css")
+		#fb-root
+		script(src="//apis.google.com/js/plusone.js", async)
