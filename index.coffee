@@ -1,6 +1,5 @@
 URL_EXTENDED_NICK_JSON = "nick.json"
 
-eagull = window.eagull or = {}
 view = blaze.view or {}
 util = blaze.util or {}
 config = blaze.config or {}
@@ -17,7 +16,7 @@ config.SCREEN_RESPONSE_ACCEPT = "** You have entered the groupchat. You don't kn
 config.SCREEN_RESPONSE_EXPECTED = "I agree"
 
 
-eagull.getRandomNick = -> NICK_LIST[util.randomInt(NICK_LIST.length)]
+getRandomNick = -> NICK_LIST[util.randomInt(NICK_LIST.length)]
 
 view.updateXMPPStatus = (d) ->
 	$('#xmppStatus').text d
@@ -75,7 +74,7 @@ sendMessage = (msg) ->
 		view.youMsg msg
 		if util.normalizeStr(msg) is util.normalizeStr(config.SCREEN_RESPONSE_EXPECTED)
 			config.challengePassed = true
-			config.nick = eagull.getRandomNick()
+			config.nick = getRandomNick()
 			xmpp.join config.ROOM, config.nick
 			view.strangerMsg config.SCREEN_RESPONSE_ACCEPT
 			track.event 'message', 'challenge', 'accept', msg
@@ -112,7 +111,7 @@ commands =
 		if util.randomInt(10) < 6
 			xmpp.conn.muc.changeNick config.joinedRoom, newNick
 		else
-			 xmpp.conn.muc.changeNick config.joinedRoom, eagull.getRandomNick()
+			 xmpp.conn.muc.changeNick config.joinedRoom, getRandomNick()
 		true
 
 	users: ->
