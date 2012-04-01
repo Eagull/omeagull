@@ -3,7 +3,7 @@ html
 	head
 		title Omeagull
 
-		link(rel='stylesheet', href='omegle.css')
+		link(rel='stylesheet', href='/omegle.css')
 		style(type='text/css')
 			.logwrapper { margin-right: 0px; }
 			.controlwrapper { margin-right: 0px; }
@@ -11,17 +11,17 @@ html
 			#sharebuttons span { margin: 0 0.5rem }
 		link(rel='icon', type='image/x-icon', href="favicon.ico")
 		script window.eagull = { version: "1" };
-		script(src="lib/jquery.min.js")
-		script(src="lib/strophe.min.js")
-		script(src="lib/strophe.muc.min.js")
-		script(src="omeagull.min.js")
+		script(src="/lib/jquery.min.js")
+		script(src="/lib/strophe.min.js")
+		script(src="/lib/strophe.muc.min.js")
+		script(src="/omeagull.min.js")
 
 	body
 		#header
 			h1#logo
-				img(src="logo.png", height="57", alt="Omeagullible")
+				img(src="/logo.png", height="57", alt="Omeagullible")
 			h2#tagline
-				img(src="tagline.png", width="220", height="57", alt="Talk to strangers!")
+				img(src="/tagline.png", width="220", height="57", alt="Talk to strangers!")
 			#sharebuttons
 				span
 					a.ajax(x-doc="17SowdU8hiOngT-oDWs2Ho_UAjf5yy1yjEgXytBMnNJI", href="") About
@@ -74,5 +74,5 @@ html
 			.logitem
 				p.statuslog {msg}
 		script(src="http://www.google-analytics.com/ga.js")
-		script(src="lib/jquery.fancybox.pack.js")
-		link(rel="stylesheet", href="lib/jquery.fancybox.css")
+		script(src="/lib/jquery.fancybox.pack.js")
+		link(rel="stylesheet", href="/lib/jquery.fancybox.css")

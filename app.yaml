@@ -6,7 +6,7 @@ api_version: 1
 default_expiration: 0s
 
 handlers:
-- url: /
+- url: /(embed.*|room.*|)
   static_files: index.html
   upload: index.html
 
