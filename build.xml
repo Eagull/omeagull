@@ -8,6 +8,12 @@
 			<arg value="${outputDir}" />
 			<arg line="." />
 		</exec>
+		<exec executable="git" outputproperty="git.revision">
+			<arg value="rev-parse"/>
+			<arg value="--short"/>
+			<arg value="HEAD"/>
+		</exec>
+		<replaceregexp file="${outputDir}/index.html" match="@VERSION@" replace="${git.revision}" />
 	</target>
 
 	<target name="coffee">
