@@ -4,6 +4,8 @@ _gaq.push(['_trackPageview']);
 
 track = window.track = {}
 
-track.event = (args...) ->
-	args.unshift '_trackEvent'
+track.event = (category, action, label) ->
+	args = ['_trackEvent', category]
+	args.push action if action
+	args.push label if label
 	_gaq.push args

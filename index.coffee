@@ -78,10 +78,10 @@ sendMessage = (msg) ->
 			config.nick = getRandomNick()
 			xmpp.join config.ROOM, config.nick
 			view.strangerMsg config.SCREEN_RESPONSE_ACCEPT
-			track.event 'message', 'challenge', 'accept', msg
+			track.event 'challenge', 'accept', msg
 		else
 			view.strangerMsg config.SCREEN_RESPONSE_REJECT
-			track.event 'message', 'challenge', 'reject', msg
+			track.event 'challenge', 'reject', msg
 
 commands =
 	help: ->
