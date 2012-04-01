@@ -288,6 +288,6 @@ $(xmpp).bind 'kicked', (event, data) ->
 $(xmpp).bind 'nickChange', (event, data) ->
 	if data.nick is config.nick
 		config.nick = data.newNick
-		view.statusMsg "You are now known as #{data.newNick}"
+		view.statusMsg messages.meNickChanged.random().replace '{nick}', data.newNick
 	else
-		view.statusMsg "#{data.nick} is now known as #{data.newNick}"
+		view.statusMsg messages.userNickChanged.random().replace('{nick}', data.nick).replace '{newNick}', data.newNick

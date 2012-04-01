@@ -106,3 +106,20 @@ window.blaze.messages =
 		"Be gone, slimebag! You were kicked."
 		"MUHAHAHHAHAHA that gotta hurt... you just got kicked."
 	]
+
+	userNickChanged: [
+		"{nick} is now known as {newNick}."
+		"{nick} is struggling to come to terms with their internet-identity and is now known as {newNick}."
+		"{nick} will now be addressed as {newNick}."
+		"{nick} transformed into {newNick}."
+		"{nick} evolved. Meet {newNick}!"
+		"{nick} changed their name to {newNick}. Tell them to make up their mind!"
+	]
+
+	meNickChanged: [
+		"You are now known as {nick}."
+		"{nick} is now your name, regardless of what anyone thinks."
+		"Your name is now {nick}. Don't change it again."
+		"{nick} is a horrible nickname, but if that's what you want to be... sure!"
+		"You shall be called {nick} from now on."
+	]
