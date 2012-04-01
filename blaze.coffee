@@ -19,14 +19,11 @@ blaze.util =
 
 blaze.view =
 	notification: (opts) ->
-		if config.notifications and not document.hasFocus()
-			notification = webkitNotifications.createNotification "logo16.png", opts.title or "", opts.body or ""
-			notification.onclick = -> window.focus(); @cancel()
-			notification.show()
-			setTimeout (-> notification.cancel()), opts.timeout or 15000, notification
-
-	toggleNotifications: (enabled) ->
-		config.notifications = if enabled is undefined then !config.notifications else !!enabled
+		return if not webkitNotifications or webkitNotifications.checkPermission() isnt 0 or document.hasFocus()
+		notification = webkitNotifications.createNotification "/logo16.png", opts.title or "", opts.body or ""
+		notification.onclick = -> window.focus(); @cancel()
+		notification.show()
+		setTimeout (-> notification.cancel()), opts.timeout or 15000, notification
 
 	lightbox: (content, opts) ->
 		$.extend opts,

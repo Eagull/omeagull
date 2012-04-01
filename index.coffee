@@ -123,6 +123,10 @@ commands =
 			view.statusMsg "Users: " + xmpp.rooms[config.joinedRoom].roster.join(', ')
 		true
 
+	notify: ->
+		webkitNotifications.requestPermission this
+		true
+
 	history: ->
 		if not config.history
 			view.statusMsg "I have nothing for you."
@@ -255,12 +259,19 @@ $(xmpp).bind 'groupMessage', (event, data) ->
 		track.event 'message', 'groupchat', 'out'
 	else
 		view.strangerMsg msg, data.nick
+		if msg.toLowerCase().indexOf(config.nick.toLowerCase()) isnt -1
+			view.notification
+				title: data.nick
+				body: msg
 		track.event 'message', 'groupchat', 'in'
 
 $(xmpp).bind 'privateMessage', (event, data) ->
 	msg = $.trim(data.text)
 	return if not msg
 	view.privateMsg msg, data.nick, config.nick
+	view.notification
+		title: data.nick
+		body: msg
 	track.event 'message', 'chat', 'in'
 
 $(xmpp).bind 'joined', (event, data) ->
@@ -268,7 +279,6 @@ $(xmpp).bind 'joined', (event, data) ->
 		config.joinedRoom = data.room
 	else
 		view.statusMsg messages.joined.random().replace '{nick}', data.nick
-		
 
 $(xmpp).bind 'parted', (event, data) ->
 	return if config.joinedRoom isnt data.room
