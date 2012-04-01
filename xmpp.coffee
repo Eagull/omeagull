@@ -2,7 +2,7 @@ xmpp = window.xmpp = window.xmpp || {}
 
 DEFAULT_BOSH_SERVICE = 'http://xmpp.eagull.net:5280/http-bind'
 DEFAULT_USER = 'anon.eagull.net'
-RESOURCE = "stranger-#{eagull.version}-#{parseInt(Date.now()/1000)}"
+RESOURCE = "omeagull-#{parseInt(Date.now()/1000)}"
 xmpp.debug = xmpp.debug is true
 
 xmpp.rooms = {}
