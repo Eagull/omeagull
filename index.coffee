@@ -240,6 +240,9 @@ $(xmpp).bind 'connecting error authenticating authfail connected connfail discon
 
 $(xmpp).bind 'error authfail connfail disconnected', (event) ->
 	view.statusMsg "Connection Status: " + event.type
+	view.append $('<button>').text("Reconnect").click ->
+		view.clearConsole()
+		xmpp.connect $('#txtXmppId').val(), $('#txtXmppPasswd').val()
 
 $(xmpp).bind 'connecting disconnecting', (event) ->
 	view.statusMsg event.type + "..."
@@ -249,9 +252,8 @@ $(xmpp).bind 'connected', (event) ->
 	view.statusMsg config.STATUS_START
 	view.strangerMsg "** " + messages.welcome.random()
 	if webkitNotifications.checkPermission() is 1
-		btn = $('<button>').text("Enable Notifications").click ->
+		view.append $('<button>').text("Enable Notifications").click ->
 			webkitNotifications.requestPermission this
-		view.append btn
 
 $(xmpp).bind 'groupMessage', (event, data) ->
 	msg = $.trim(data.text)
