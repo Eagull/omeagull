@@ -27,6 +27,7 @@ view.clearConsole = ->
 
 view.log = (template, msg, nick) ->
 	msg = $('<div>').text(msg).html()
+	msg = util.linkify msg
 	$('.logbox').append $(template).text().replace('{nick}', nick).replace('{msg}', msg)
 	$('.logbox').scrollTop $('.logbox').prop('scrollHeight')
 

@@ -11,6 +11,10 @@ blaze.util =
 
 	normalizeStr: (str) -> str.trim().replace(/\s{2,}/g, ' ').replace(/\./g, '').toLowerCase()
 
+	linkify: (text) ->
+		pattern = /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim
+		text.replace pattern, '<a href="$1">$1</a>'
+
 blaze.view =
 	notification: (opts) ->
 		if config.notifications and not document.hasFocus()
