@@ -251,7 +251,7 @@ $(xmpp).bind 'connected', (event) ->
 	view.clearConsole()
 	view.statusMsg config.STATUS_START
 	view.strangerMsg "** " + messages.welcome.random()
-	if webkitNotifications.checkPermission() is 1
+	if webkitNotifications and webkitNotifications.checkPermission() is 1
 		view.append $('<button>').text("Enable Notifications").click ->
 			webkitNotifications.requestPermission this
 

@@ -128,11 +128,11 @@ onConnect = (status) ->
 			console.error 'Strophe failed to authenticate.'
 
 		when Strophe.Status.CONNECTED
-			$(xmpp).triggerHandler 'connected'
 			console.log 'Strophe is connected.'
 			xmpp.conn.addHandler xmpp.eventMessageHandler, null, 'message'
 			xmpp.conn.addHandler xmpp.mucPresenceHandler, null, 'presence'
 			xmpp.conn.send $pres().tree()
+			$(xmpp).triggerHandler 'connected'
 
 		when Strophe.Status.DISCONNECTED
 			$(xmpp).triggerHandler 'disconnected'
