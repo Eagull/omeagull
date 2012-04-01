@@ -1,8 +1,9 @@
 URL_EXTENDED_NICK_JSON = "nick.json"
 
 view = blaze.view or {}
-util = blaze.util or {}
+util = blaze.util
 config = blaze.config or {}
+messages = blaze.messages
 
 NICK_LIST = ["Abra", "Charmander", "Jigglypuff", "Metapod", "Pikachu", "Psyduck", "Squirtle"]
 
@@ -12,9 +13,6 @@ $.getJSON(URL_EXTENDED_NICK_JSON).success (list) ->
 config.debug = window.location.hostname.indexOf('eagull.net') is -1
 config.ROOM = if config.debug then 'test@chat.eagull.net' else 'firemoth@chat.eagull.net'
 config.STATUS_START = "You're now chatting with FireMoth's Stranger Abducter."
-config.SCREEN_QUESTION = "** Hi Stranger! You're about to enter a groupchat. All you have to do is to look intelligent and respect others. If you're up for this little challenge, type 'I agree'."
-config.SCREEN_RESPONSE_REJECT = "Type 'I agree' to continue."
-config.SCREEN_RESPONSE_ACCEPT = "** You have entered the groupchat. You don't know your nickname. Go figure."
 config.SCREEN_RESPONSE_EXPECTED = "I agree"
 
 getRandomNick = -> NICK_LIST[util.randomInt(NICK_LIST.length)]
@@ -78,10 +76,10 @@ sendMessage = (msg) ->
 			config.challengePassed = true
 			config.nick = getRandomNick()
 			xmpp.join config.ROOM, config.nick
-			view.strangerMsg config.SCREEN_RESPONSE_ACCEPT
+			view.strangerMsg messages.challengeAccept.random()
 			track.event 'challenge', 'accept', msg
 		else
-			view.strangerMsg config.SCREEN_RESPONSE_REJECT
+			view.strangerMsg messages.challengeReject.random()
 			track.event 'challenge', 'reject', msg
 
 commands =
@@ -99,16 +97,16 @@ commands =
 	nick: (args) ->
 		newNick = args.shift()
 		if not config.joinedRoom
-			view.statusMsg "You're not even in the room. You think you're very smart?"
+			view.statusMsg messages.actionImpossible.random()
 			return true
 		if not newNick
-			view.statusMsg "Are you stupid or something? Gimme a nickname."
+			view.statusMsg messages.invalidInput.random()
 			return false
 		if not /^[a-zA-Z](\w)*$/.test(newNick)
-			view.statusMsg "Sorry bub, no special characters"
+			view.statusMsg messages.invalidInput.random()
 			return false
 		if newNick.length > 20
-			view.statusMsg "Sorry bub, keep it short"
+			view.statusMsg messages.invalidInput.random()
 			return false
 		if util.randomInt(10) < 6
 			xmpp.conn.muc.changeNick config.joinedRoom, newNick
@@ -170,7 +168,7 @@ $ ->
 		if not config.joinedRoom or not config.challengePassed
 			view.statusMsg "lol no, you can't do that"
 			return
-		msg = $('<div>').text "Hm, there's no point in disconnecting. Want a new nickname?"
+		msg = $('<div>').text messages.disconnectRequest.random()
 		txtNick = $('<input>').val config.nick
 		msg.append $('<div>').css('text-align', 'center').css('margin-top', '1rem').append txtNick
 		txtNick.change ->
@@ -187,7 +185,7 @@ $ ->
 		if msg
 			sendMessage msg
 		else
-			view.statusMsg "lol, wut r u tryinna send?"
+			view.statusMsg messages.actionImpossible.random()
 
 	$('.chatmsg').keydown (e) ->
 		return if e.which isnt 13
@@ -239,7 +237,7 @@ $(xmpp).bind 'connecting disconnecting', (event) ->
 $(xmpp).bind 'connected', (event) ->
 	view.clearConsole()
 	view.statusMsg config.STATUS_START
-	view.strangerMsg config.SCREEN_QUESTION
+	view.strangerMsg "** " + messages.welcome.random()
 
 $(xmpp).bind 'groupMessage', (event, data) ->
 	msg = $.trim(data.text)
@@ -266,14 +264,15 @@ $(xmpp).bind 'joined', (event, data) ->
 	if data.nick is config.nick
 		config.joinedRoom = data.room
 	else
-		view.statusMsg "#{data.nick} has entered the building."
+		view.statusMsg messages.joined.random().replace '{nick}', data.nick
+		
 
 $(xmpp).bind 'parted', (event, data) ->
 	return if config.joinedRoom isnt data.room
 	if data.nick is config.nick
 		delete config.joinedRoom
 	else
-		view.statusMsg "#{data.nick} has left the building."
+		view.statusMsg messages.parted.random().replace '{nick}', data.nick
 
 $(xmpp).bind 'kicked', (event, data) ->
 	if data.nick is config.nick

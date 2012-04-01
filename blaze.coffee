@@ -2,6 +2,8 @@ blaze = window.blaze = window.blaze || {}
 
 config = blaze.config or = {}
 
+Array.prototype.random = () -> @[Math.floor((Math.random()*@length))];
+
 blaze.util =
 	randomInt: (a, b) ->
 		b or= 0
