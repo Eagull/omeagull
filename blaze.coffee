@@ -1,5 +1,4 @@
-blaze = window.blaze = window.blaze || {}
-
+blaze = window.blaze or = {}
 config = blaze.config or = {}
 
 Array.prototype.random = () -> @[Math.floor((Math.random()*@length))];

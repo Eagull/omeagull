@@ -1,5 +1,3 @@
-URL_EXTENDED_NICK_JSON = "nick.json"
-
 view = blaze.view or {}
 util = blaze.util
 config = blaze.config or {}
@@ -7,11 +5,10 @@ messages = blaze.messages
 
 NICK_LIST = ["Abra", "Charmander", "Jigglypuff", "Metapod", "Pikachu", "Psyduck", "Squirtle"]
 
-$.getJSON(URL_EXTENDED_NICK_JSON).success (list) ->
+$.getJSON('nick.json').success (list) ->
 	NICK_LIST = list
 
-config.debug = window.location.hostname.indexOf('eagull.net') is -1
-config.ROOM = if config.debug then 'test@chat.eagull.net' else 'firemoth@chat.eagull.net'
+config.ROOM = if blaze.debug then 'test@chat.eagull.net' else 'firemoth@chat.eagull.net'
 config.STATUS_START = "You're now chatting with FireMoth's Stranger Abducter."
 config.SCREEN_RESPONSE_EXPECTED = "I agree"
 
@@ -126,10 +123,6 @@ commands =
 			view.statusMsg "Users: " + xmpp.rooms[config.joinedRoom].roster.join(', ')
 		true
 
-	notify: ->
-		webkitNotifications.requestPermission this
-		true
-
 	history: ->
 		if not config.history
 			view.statusMsg "I have nothing for you."
@@ -173,7 +166,7 @@ $ ->
 
 	$('.disconnectbtn').click ->
 		if not config.joinedRoom or not config.challengePassed
-			view.statusMsg "lol no, you can't do that"
+			view.statusMsg messages.actionImpossible.random()
 			return
 		msg = $('<div>').text messages.disconnectRequest.random()
 		txtNick = $('<input>').val config.nick
@@ -252,8 +245,9 @@ $(xmpp).bind 'connected', (event) ->
 	view.statusMsg config.STATUS_START
 	view.strangerMsg "** " + messages.welcome.random()
 	if webkitNotifications and webkitNotifications.checkPermission() is 1
-		view.append $('<button>').text("Enable Notifications").click ->
+		view.append $('<button>').text("Enable Notifications").click (e) ->
 			webkitNotifications.requestPermission this
+			$(e.target).remove()
 
 $(xmpp).bind 'groupMessage', (event, data) ->
 	msg = $.trim(data.text)

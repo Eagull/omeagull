@@ -30,7 +30,7 @@ html(itemscope, itemtype="http://schema.org/Product")
 			#gplus { position: absolute; right: 20rem; bottom: 0.33rem; }
 			#fblike { position: absolute; right: 22.5rem; bottom: 0.67rem; }
 		link(rel='icon', type='image/x-icon', href="favicon.ico")
-		script window.eagull = { version: "@VERSION@" };
+		script window.blaze = { version: "@VERSION@", debug: (location.hostname.indexOf('eagull.net') == -1) };
 		script(src="/lib/jquery.min.js")
 		script(src="/lib/strophe.min.js")
 		script(src="/lib/strophe.muc.min.js")

@@ -1,9 +1,9 @@
-xmpp = window.xmpp = window.xmpp || {}
+xmpp = window.xmpp or = {}
+blaze = window.blaze
 
 DEFAULT_BOSH_SERVICE = 'http://xmpp.eagull.net:5280/http-bind'
 DEFAULT_USER = 'anon.eagull.net'
-RESOURCE = "omeagull-#{eagull.version}-#{parseInt(Date.now()/1000)}"
-xmpp.debug = xmpp.debug is true
+RESOURCE = "omeagull-#{blaze.version}-#{parseInt(Date.now()/1000)}"
 
 xmpp.rooms = {}
 
@@ -160,7 +160,7 @@ xmpp.connect = (id, passwd, service) ->
 	passwd or= ''
 	xmpp.conn.connect id, passwd, onConnect
 
-	if xmpp.debug
+	if blaze.debug
 		xmpp.conn.rawInput = (data) ->
 			console.debug "RECV: " + data
 		xmpp.conn.rawOutput = (data) ->
