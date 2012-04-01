@@ -1,0 +1,78 @@
+doctype 5
+html
+	head
+		title Omeagull
+
+		link(rel='stylesheet', href='omegle.css')
+		style(type='text/css')
+			.logwrapper { margin-right: 0px; }
+			.controlwrapper { margin-right: 0px; }
+		style(type='text/css')
+			#sharebuttons span { margin: 0 0.5rem }
+		link(rel='icon', type='image/x-icon', href="favicon.ico")
+		script window.eagull = { version: "1" };
+		script(src="lib/jquery.min.js")
+		script(src="lib/strophe.min.js")
+		script(src="lib/strophe.muc.min.js")
+		script(src="omeagull.min.js")
+
+	body
+		#header
+			h1#logo
+				img(src="logo.png", height="57", alt="Omeagullible")
+			h2#tagline
+				img(src="tagline.png", width="220", height="57", alt="Talk to strangers!")
+			#sharebuttons
+				span
+					a.ajax(x-doc="17SowdU8hiOngT-oDWs2Ho_UAjf5yy1yjEgXytBMnNJI", href="") About
+				span
+					a.ajax(x-doc="1Faa0akTtbOgC2k6RRjl_xRamsAYJwzFgzJb6GJ0nb80", href="") Usage Guide
+				span
+					a.ajax(x-doc="1-TwAcDexcW7a1PakgQJRrHr07ZXJf_ovF1KbTPzvHns", href="") Terms of Use
+				span
+					a.ajax(x-doc="1sYF5bq56pj12Q8E9md5Y_0hFQu0vRmpdMtyzHa0qEL8", href="") Privacy
+			#onlinecount
+				strong(title="it's over 9000!!!1!") 9001
+				|  strangers online
+		.chatbox
+			.logwrapper(style="top:90px")
+				.logbox
+					.logitem
+						p.statuslog Hunting for strangers...
+				.logwrapperpush
+			.controlwrapper
+				table.controltable(cellpadding=0, cellspacing=0, border=0)
+					tbody
+						tr
+							td.disconnectbtncell
+								.disconnectbtnwrapper
+									button.disconnectbtn Disconnect
+							td.chatmsgcell
+								.chatmsgwrapper
+									textarea.chatmsg(cols=80, rows=3)
+							td.sendbthcell
+								.sendbtnwrapper
+									button.sendbtn Send
+										.btnkbshortcut Enter
+
+		script#templateYouMsg(type='x-template')
+			.logitem
+				p.youmsg
+					strong.msgsource {nick}:
+					|  {msg}
+		script#templateStrangerMsg(type='x-template')
+			.logitem
+				p.strangermsg
+					strong.msgsource {nick}:
+					|  {msg}
+		script#templatePrivateMsg(type='x-template')
+			.logitem
+				p.strangermsg
+					strong.msgsource(style="color: green") {nick}:
+					|  {msg}
+		script#templateStatusMsg(type='x-template')
+			.logitem
+				p.statuslog {msg}
+		script(src="http://www.google-analytics.com/ga.js")
+		script(src="lib/jquery.fancybox.pack.js")
+		link(rel="stylesheet", href="lib/jquery.fancybox.css")

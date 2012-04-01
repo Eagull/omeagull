@@ -1,0 +1,600 @@
+html {
+	height: 100%
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #EEE;
+	height: 100%;
+	font-family: Arial, sans-serif
+}
+
+#header {
+	position: relative;
+	padding: .5em;
+	background: #FFF;
+	border-bottom: 1px solid #CCC
+}
+
+#logo {
+	margin: 0;
+	padding: 0;
+	float: left;
+	font-size: 1em;
+	margin-left: 1em;
+	margin-right: 5em
+}
+
+#logo img {
+	display: block
+}
+
+#tagline {
+	margin: 0;
+	padding: 0
+}
+
+#tagline img {
+	display: block
+}
+
+#onlinecount {
+	font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+	font-size: 1.5em;
+	color: #9cf;
+	position: absolute;
+	right: .6666666666666666666666666em;
+	bottom: .333333333333333333333333em
+}
+
+#onlinecount strong {
+	font-size: 1.3333333333333333333333em;
+	color: #6cb5ff
+}
+
+#intro {
+	line-height: 1.5;
+	margin: 1em;
+	margin-right: 192px;
+	padding: .5em;
+	padding-top: 0;
+	border: 1px solid #CCC;
+	background: white;
+	border-radius: .5em;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em
+}
+
+#aim {
+	margin: 0;
+	text-align: center;
+	font-size: .9em
+}
+
+img {
+	border: 0 none
+}
+
+.logwrapper {
+	border: 1px solid #CCC;
+	border-radius-topleft: .5em;
+	border-radius-topright: .5em;
+	-moz-border-radius-topleft: .5em;
+	-moz-border-radius-topright: .5em;
+	-webkit-border-top-left-radius: .5em;
+	-webkit-border-top-right-radius: .5em;
+	background: white;
+	position: absolute;
+	left: 1em;
+	right: 1em;
+	bottom: 6.5em;
+	_width: 96%;
+	_height: 250px
+}
+
+.logbox {
+	position: absolute;
+	top: .5em;
+	bottom: 0;
+	left: .5em;
+	right: 0;
+	overflow: auto;
+	_width: 97%;
+	_height: 230px
+}
+
+.controlwrapper {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	right: 1em;
+	height: 5em
+}
+
+.controltable {
+	border-collapse: separate;
+	border-spacing: 0
+}
+
+.disconnectbtnwrapper {
+	margin-right: .5em;
+	border: 1px solid #CCC;
+	border-radius-bottomleft: .5em;
+	-moz-border-radius-bottomleft: .5em;
+	-webkit-border-bottom-left-radius: .5em
+}
+
+.disconnectbtn {
+	font-family: sans-serif;
+	font-size: 1em;
+	background: white;
+	width: 7em;
+	height: 5em;
+	padding: 0;
+	margin: 0;
+	border: 0 none;
+	border-radius-bottomleft: .5em;
+	-moz-border-radius-bottomleft: .5em;
+	-webkit-border-bottom-left-radius: .5em
+}
+
+.sendbtnwrapper {
+	margin-left: .5em;
+	border: 1px solid #CCC;
+	border-radius-bottomright: .5em;
+	-moz-border-radius-bottomright: .5em;
+	-webkit-border-bottom-right-radius: .5em
+}
+
+.sendbtn {
+	font-family: sans-serif;
+	font-size: 1em;
+	background: white;
+	width: 7em;
+	height: 5em;
+	padding: 0;
+	margin: 0;
+	border: 0 none;
+	border-radius-bottomright: .5em;
+	-moz-border-radius-bottomright: .5em;
+	-webkit-border-bottom-right-radius: .5em
+}
+
+.chatmsgcell {
+	width: 100%
+}
+
+.chatmsgwrapper {
+	background: white;
+	border: 1px solid #CCC;
+	height: 4.5em;
+	padding: .25em
+}
+
+.chatmsg {
+	width: 100%;
+	background: white;
+	font-family: sans-serif;
+	font-size: 1em;
+	border: 0 none;
+	padding: 0;
+	margin: 0;
+	height: 4.5em;
+	font-size: 1em;
+	overflow: auto
+}
+
+.youmsg,.strangermsg {
+	margin: 0;
+	padding: 0
+}
+
+.youmsg .msgsource {
+	color: blue;
+	font-weight: bold
+}
+
+.strangermsg .msgsource {
+	color: red;
+	font-weight: bold
+}
+
+.statuslog {
+	color: #555;
+	font-size: .9em;
+	font-weight: bold;
+	margin: 0;
+	padding: 0
+}
+
+.logitem {
+	padding-bottom: .5em
+}
+
+textarea:focus {
+	outline: 0
+}
+
+#feedback {
+	color: #555;
+	margin-left: 1em
+}
+
+#feedback label {
+	font-size: .9em;
+	font-weight: bold
+}
+
+#emailfield {
+	position: absolute;
+	top: -5000px;
+	left: -5000px
+}
+
+#feedback h2 {
+	margin: 0;
+	padding: 0;
+	padding-left: 15px;
+	font-size: .9em;
+	font-weight: bold;
+	cursor: default
+}
+
+#feedback.expanded h2 {
+	background: url(/static/feedbackexpanded.png?2) no-repeat center left
+}
+
+#feedback.collapsed h2 {
+	color: #AAA;
+	background: url(/static/feedbackcollapsed.png?2) no-repeat center left
+}
+
+#feedback form {
+	margin-left: 15px
+}
+
+#feedback.collapsed form {
+	display: none
+}
+
+#adwrapper {
+	position: absolute;
+	right: 1em;
+	width: 160px;
+	height: 600px;
+	margin-top: 1em;
+	overflow: hidden
+}
+
+#adwrapper2 {
+	position: absolute;
+	width: 160px;
+	height: 600px;
+	left: 0;
+	top: 0
+}
+
+.inconversation #adwrapper {
+	display: none
+}
+
+.controlwrapper {
+	margin-right: 176px
+}
+
+.inconversation .controlwrapper {
+	margin-right: 0
+}
+
+.videochat .controlwrapper {
+	margin-right: 336px
+}
+
+.logwrapper {
+	margin-right: 176px;
+	_width: 60%
+}
+
+.inconversation .logwrapper {
+	_width: 96%;
+	margin-right: 0
+}
+
+.videochat .logwrapper {
+	margin-right: 336px;
+	_width: 60%
+}
+
+#appstore {
+	margin: 10px;
+	margin-right: 192px;
+	text-align: center
+}
+
+#flashwrapper {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	margin-top: 1em;
+	overflow: hidden
+}
+
+#chatbtnwrapper {
+	padding-bottom: .7em;
+	text-align: center
+}
+
+#chatbtn {
+	display: block;
+	margin: auto
+}
+
+.videochat #flashwrapper,.videochat #flashwrapper.inited {
+	width: 320px;
+	height: 520px;
+	top: auto;
+	left: auto;
+	bottom: auto;
+	right: 1em
+}
+
+#chattypes {
+	text-align: center;
+	margin: auto;
+	border-collapse: collapse
+}
+
+#chattypes td {
+	padding: 0
+}
+
+#chattypeorcell {
+	color: #555;
+	font-size: .9em;
+	font-weight: bold;
+	padding: .5em !important
+}
+
+#textbtn,#videobtn {
+	display: block;
+	margin: auto;
+	cursor: hand;
+	cursor: pointer
+}
+
+#videobtn.disabled {
+	cursor: default
+}
+
+#videobtnstatus {
+	color: #AAA;
+	font-size: .7em
+}
+
+#startachat,#intoheader {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	margin-bottom: .2em;
+	color: #777;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+	font-weight: normal;
+	font-size: 1.25em
+}
+
+#sharebuttons {
+	position: absolute;
+	right: 1em;
+	top: .5em;
+	margin-right: -1px;
+	vertical-align: top;
+	overflow: hidden
+}
+
+#sharebuttons * {
+	vertical-align: top !important
+}
+
+#EFF {
+	margin-left: 1em;
+	margin-right: 192px;
+	text-align: center;
+	color: #AAA;
+	font-size: .8em
+}
+
+#EFF a {
+	color: #7474dc;
+	text-decoration: none
+}
+
+.btnkbshortcut {
+	font-size: .8em;
+	color: #9cf;
+	font-weight: bold;
+	margin-top: .25em;
+	height: 0;
+	overflow: show
+}
+
+:disabled .btnkbshortcut,[disabled] .btnkbshortcut {
+	color: #a1c3e6
+}
+
+.questionHeading {
+	font-size: .9em;
+	padding: .1111111111111111111em;
+	padding-left: 1.11111111111111111em;
+	background: #6cb5ff;
+	color: #DEF;
+	font-weight: bold;
+	border-radius-topleft: .5em;
+	-moz-border-radius-topleft: .5em;
+	-webkit-border-top-left-radius: .5em;
+	border-radius-topright: .5em;
+	-moz-border-radius-topright: .5em;
+	-webkit-border-top-right-radius: .5em
+}
+
+.collapsed .questionHeading {
+	border-radius: .5em;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	font-size: 1.1em
+}
+
+.question {
+	width: 75%
+}
+
+.question.collapsed {
+	cursor: hand;
+	cursor: pointer
+}
+
+.collapsed .questionText {
+	display: none
+}
+
+.questionText {
+	padding: .5em;
+	padding-left: 1em;
+	background: #DEF
+}
+
+#tryspymode {
+	margin: auto
+}
+
+#tryspymode.collapsed .questionHeading {
+	padding: .11111111111111em;
+	text-align: center;
+	font-family: 'Lucida Grande', Verdana, sans-serif
+}
+
+#tryspymode.collapsed {
+	width: 19em;
+	max-width: 100%
+}
+
+.questionInput {
+	width: 90%
+}
+
+#facebooklogin {
+	text-align: center;
+	margin: 1em 0
+}
+
+.facebookpicture {
+	vertical-align: middle
+}
+
+.facebookgreeting {
+	padding-left: .5em;
+	color: #555;
+	font-size: .9em;
+	font-weight: bold
+}
+
+.shoulduselikesdiv {
+	clear: left;
+	margin-top: .5em
+}
+
+.commonlikescancel {
+	padding-top: .5em;
+	font-size: .75em
+}
+
+.facebookanonymousdisclaimer {
+	font-size: .75em;
+	font-weight: bold;
+	color: #555
+}
+
+.conversationgreat {
+	color: black;
+	padding: .1em .25em;
+	border-radius: .5em;
+	font-weight: normal;
+	font-size: .9em;
+	background: #ff952d
+}
+
+#mobilesitenote {
+	text-align: center;
+	font-weight: bold;
+	font-size: .9em;
+	color: #555;
+	margin: 0;
+	padding: 0;
+	height: 3.5em;
+	line-height: 3.5em;
+	vertical-align: middle
+}
+
+.chevron {
+	font-size: 3.5em;
+	font-weight: normal;
+	vertical-align: sub
+}
+
+#beyourself {
+	text-align: center;
+	margin-top: 1em
+}
+
+.topictageditor {
+	border: 1px solid #CCC;
+	position: relative;
+	padding: .25em
+}
+
+.topictag {
+	background: #6cb5ff;
+	border-radius: .25em;
+	padding: .25em;
+	margin: 0 .25em;
+	line-height: 2;
+	white-space: nowrap
+}
+
+.topictagdelete {
+	padding-left: .25em;
+	cursor: default;
+	font-weight: bold;
+	vertical-align: bottom
+}
+
+.newtopicinput {
+	border: 0 none;
+	padding: 0;
+	width: 50%;
+	outline: 0 none !important;
+	-moz-outline: 0 none !important;
+	font-size: 1em;
+	font-family: inherit
+}
+
+#topicsettingscell {
+	vertical-align: top
+}
+
+#topicsettingscontainer {
+	width: 400px;
+	max-width: 100%;
+	margin: auto;
+	text-align: left
+}
+
+#intoheader {
+	text-align: center
+}
+
+td #topicsettingscontainer,td #intoheader {
+	padding-right: 10px
+}

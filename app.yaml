@@ -1,0 +1,19 @@
+application: fire-moth
+version: omeagull
+runtime: python
+api_version: 1
+
+default_expiration: 0s
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /(.*\.(css|ico|json|png))
+  static_files: static/\1
+  upload: static/(.*\.(css|ico|json|png))
+
+- url: /(.*)
+  static_files: \1
+  upload: (.*)

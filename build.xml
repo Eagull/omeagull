@@ -1,0 +1,58 @@
+<project name="stranger" default="build">
+	<property file="build.properties" />
+
+	<target name="jade">
+		<mkdir dir="${outputDir}" />
+		<exec executable="jade">
+			<arg value="-O" />
+			<arg value="${outputDir}" />
+			<arg line="." />
+		</exec>
+	</target>
+
+	<target name="coffee">
+		<mkdir dir="${tmpDir}" />
+		<exec executable="coffee">
+			<arg value="-o" />
+			<arg value="${tmpDir}" />
+			<arg line="." />
+		</exec>
+		<exec executable="coffee">
+			<arg value="-o" />
+			<arg value="${outputDir}" />
+			<arg line="." />
+		</exec>
+	</target>
+
+	<target name="minify" depends="coffee">
+		<mkdir dir="${outputDir}" />
+		<concat destfile="${tmpDir}/bundle.js">
+			<filelist dir="${tmpDir}" files="${minifyFileOrder}" />
+		</concat>
+		<java jar="${yuiCompressor}" fork="true" failonerror="true" output="${outputDir}/${outputJSFile}">
+			<arg value="${tmpDir}/bundle.js" />
+		</java>
+	</target>
+
+	<target name="copyDependencies">
+		<copy todir="${outputDir}">
+			<fileset dir="." includes="${copyFiles}" />
+		</copy>
+	</target>
+
+	<target name="build" depends="jade, coffee, minify, copyDependencies" />
+
+	<target name="deploy-bare">
+		<exec executable="${appengine.sdk}/appcfg.py" dir=".">
+				<arg line="-e ${appengine.email} --oauth2 --noauth_local_webserver" />
+				<arg line="update ${outputDir}" />
+		</exec>
+	</target>
+
+	<target name="deploy" depends="clean, build, deploy-bare" />
+
+	<target name="clean" description="Deletes the generated files">
+		<delete dir="${tmpDir}" failonerror="false" />
+		<delete dir="${outputDir}" failonerror="false" />
+	</target>
+</project>
