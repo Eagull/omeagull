@@ -54,7 +54,7 @@ window.blaze.messages =
 		"Well, that's the first challenge passed. Your IQ is definitely over 50. Sadly, 51 might earn you a kick pretty sharpish. Prove your worth by figuring your nickname."
 		"Usually, that would earn you a place amongst us. But we don't like you, so we gave you a silly nickname. Guess what."
 	]
-	
+
 	challengeReject: [
 		"Type 'I agree' to continue."
 		"Can't you follow a simple instruction?"
@@ -64,7 +64,7 @@ window.blaze.messages =
 		"There's a lot of it about, you know."
 		"You gotta go owwwww!"
 	]
-	
+
 	disconnectRequest: [
 		"Hm, I guess there's no point in disconnecting. Want a new nickname?"
 		"Guess I'll let you change your nickname this one time."
@@ -78,7 +78,7 @@ window.blaze.messages =
 		"Meet our newest loser, {nick}."
 		"{nick} made a grand entry. What are you looking at?"
 	]
-	
+
 	parted: [
 		"{nick} has left the building."
 		"{nick} left, thank you guys."
@@ -90,4 +90,19 @@ window.blaze.messages =
 		"{nick} was ran over by a truck."
 		"{nick} used teleport."
 		"{nick} vanished."
+	]
+
+	userKicked: [
+		"{nick} has been kicked out."
+		"Oh, what a shame. It seems {nick} was kicked."
+		"Somebody hates {nick} apparently. They were kicked!!"
+		"{nick} was guillotined. Vive la revolution!"
+		"{nick} was thrown out of the building."
+	]
+
+	meKicked: [
+		"You have been kicked out."
+		"Good job at being horrible. You were kicked!"
+		"Be gone, slimebag! You were kicked."
+		"MUHAHAHHAHAHA that gotta hurt... you just got kicked."
 	]

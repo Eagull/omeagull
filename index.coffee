@@ -277,19 +277,13 @@ $(xmpp).bind 'parted', (event, data) ->
 $(xmpp).bind 'kicked', (event, data) ->
 	if data.nick is config.nick
 		delete config.joinedRoom
-
-		if data.reason
-			view.statusMsg "You have been kicked out: #{data.reason}"
-		else
-			view.statusMsg "You have been kicked out."
-
-		delete config.joinedRoom
-
+		msg = messages.meKicked.random()
+		msg += " (reason: #{data.reason})" if data.reason
+		view.statusMsg msg
 	else
-		if data.reason
-			view.statusMsg "#{data.nick} has been kicked out: #{data.reason}"
-		else
-			view.statusMsg "#{data.nick} has been kicked out."
+		msg = messages.userKicked.random().replace '{nick}', data.nick
+		msg += " (reason: #{data.reason})" if data.reason
+		view.statusMsg msg
 
 $(xmpp).bind 'nickChange', (event, data) ->
 	if data.nick is config.nick
