@@ -188,10 +188,13 @@ $ ->
 			view.statusMsg messages.actionImpossible.random()
 
 	$('.chatmsg').keydown (e) ->
-		return if e.which isnt 13
-		e.preventDefault()
-		sendMessage e.target.value
-		e.target.value = ""
+		if e.which is 9
+			e.preventDefault()
+			view.statusMsg messages.resultUnavailable.random()
+		if e.which is 13
+			e.preventDefault()
+			sendMessage e.target.value
+			e.target.value = ""
 
 	$('a.ajax').click (e) ->
 		e.preventDefault()
