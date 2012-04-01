@@ -17,11 +17,6 @@
 			<arg value="${tmpDir}" />
 			<arg line="." />
 		</exec>
-		<exec executable="coffee">
-			<arg value="-o" />
-			<arg value="${outputDir}" />
-			<arg line="." />
-		</exec>
 	</target>
 
 	<target name="minify" depends="coffee">
