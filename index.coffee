@@ -6,15 +6,16 @@ config = blaze.config or {}
 
 NICK_LIST = ["Abra", "Charmander", "Jigglypuff", "Metapod", "Pikachu", "Psyduck", "Squirtle"]
 
-config.ROOM = 'test@chat.eagull.net'
 $.getJSON(URL_EXTENDED_NICK_JSON).success (list) ->
 	NICK_LIST = list
+
+config.debug = window.location.hostname.indexOf('eagull.net') is -1
+config.ROOM = if config.debug then 'test@chat.eagull.net' else 'firemoth@chat.eagull.net'
 config.STATUS_START = "You're now chatting with FireMoth's Stranger Abducter."
 config.SCREEN_QUESTION = "** Hi Stranger! You're about to enter a groupchat. All you have to do is to look intelligent and respect others. If you're up for this little challenge, type 'I agree'."
 config.SCREEN_RESPONSE_REJECT = "Type 'I agree' to continue."
 config.SCREEN_RESPONSE_ACCEPT = "** You have entered the groupchat. You don't know your nickname. Go figure."
 config.SCREEN_RESPONSE_EXPECTED = "I agree"
-
 
 getRandomNick = -> NICK_LIST[util.randomInt(NICK_LIST.length)]
 
