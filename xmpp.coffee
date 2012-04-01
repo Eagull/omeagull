@@ -67,7 +67,7 @@ xmpp.mucPresenceHandler = (p) ->
 
 	if p.getAttribute('type') is 'unavailable'
 		i = xmpp.rooms[room].roster.indexOf nick
-		xmpp.rooms[room].roster = xmpp.rooms[room].roster.splice(i, 1) if i isnt -1
+		xmpp.rooms[room].roster.splice(i, 1) if i isnt -1
 
 		if xmpp.rooms[room].nick is nick and statusCodes.indexOf(303) < 0
 			delete xmpp.rooms[room]
