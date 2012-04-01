@@ -23,6 +23,9 @@ view.updateXMPPStatus = (d) ->
 view.clearConsole = ->
 	$('.logbox').html ''
 
+view.append = (e) ->
+	$('.logbox').append $('<div>').attr('class', 'logitem').append e
+
 view.log = (template, msg, nick) ->
 	msg = $('<div>').text(msg).html()
 	msg = util.linkify msg
@@ -245,6 +248,10 @@ $(xmpp).bind 'connected', (event) ->
 	view.clearConsole()
 	view.statusMsg config.STATUS_START
 	view.strangerMsg "** " + messages.welcome.random()
+	if webkitNotifications.checkPermission() is 1
+		btn = $('<button>').text("Enable Notifications").click ->
+			webkitNotifications.requestPermission this
+		view.append btn
 
 $(xmpp).bind 'groupMessage', (event, data) ->
 	msg = $.trim(data.text)
