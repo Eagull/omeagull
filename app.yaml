@@ -1,22 +1,32 @@
-application: fire-moth
+application: omeglepro
 version: omeagull
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
 
-default_expiration: 0s
+default_expiration: 24h
 
 handlers:
-- url: /(embed.*|room.*|)
-  static_files: index.html
-  upload: index.html
 
 - url: /lib
   static_dir: lib
 
-- url: /(.*\.(css|ico|json|png))
+- url: /favicon\.ico
+  static_files: static/favicon.ico
+  upload: static/favicon\.ico
+  expiration: 1827d
+
+- url: /(.*\.(css|json|png))
   static_files: static/\1
   upload: static/(.*\.(css|ico|json|png))
 
-- url: /(.*)
+- url: /(.*\.js)
   static_files: \1
-  upload: (.*)
+  upload: (.*\.js)
+
+- url: /(captchaChallenge|captchaImage)/(.*)
+  script: app.app
+
+- url: /(.*)
+  static_files: index.html
+  upload: index.html
