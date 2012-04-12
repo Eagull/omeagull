@@ -123,3 +123,6 @@ window.blaze.messages =
 		"{nick} is a horrible nickname, but if that's what you want to be... sure!"
 		"You shall be called {nick} from now on."
 	]
+
+	warning:
+		fbi: "If the above message says you have been reported to the FBI, it is not legitimate. Please ignore it."

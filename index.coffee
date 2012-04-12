@@ -266,6 +266,8 @@ $(xmpp).bind 'groupMessage', (event, data) ->
 			view.notification
 				title: data.nick
 				body: msg
+		if msg.indexOf("FBI") isnt -1
+			view.statusMsg messages.warning.fbi
 		track.event 'message', 'groupchat', 'in'
 
 $(xmpp).bind 'privateMessage', (event, data) ->
