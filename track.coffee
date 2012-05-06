@@ -1,11 +1,7 @@
-_gaq = window._gaq or = [];
-_gaq.push(['_setAccount', 'UA-21159963-5']);
-_gaq.push(['_trackPageview']);
+window._gaq or = [];
 
 track = window.track = {}
 
-track.event = (category, action, label) ->
-	args = ['_trackEvent', category]
-	args.push action if action
-	args.push label if label
-	_gaq.push args
+track.event = (args...) ->
+	eventArr = $.merge ['_trackEvent'], args.slice(0, 3)
+	window._gaq.push eventArr
